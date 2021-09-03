@@ -2,13 +2,13 @@ package ru.job4j.collection;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 
 public class ForwardLinked<T> implements Iterable<T> {
 
     private Node<T> head;
+    private Node<T> last;
 
-    public void add(T value) {
+    public void addFirst(T value) {
         Node<T> node = new Node<>(value, null);
         if (head == null) {
             head = node;
@@ -21,6 +21,17 @@ public class ForwardLinked<T> implements Iterable<T> {
         tail.next = node;
     }
 
+    public void addLast(T value) {
+        Node<T> l = last;
+        Node<T> node = new Node<>(l, value, null);
+        last = node;
+        if (l == null) {
+            head = node;
+        } else {
+            l.next = node;
+        }
+    }
+
     public T deleteFirst() {
        T result;
        Node<T> first;
@@ -30,8 +41,21 @@ public class ForwardLinked<T> implements Iterable<T> {
        } else {
            throw new NoSuchElementException();
        }
-       head = first;
+        head = first;
        return result;
+    }
+
+    public T deleteLast() {
+        T res;
+        Node<T> second;
+        if (last != null) {
+            res = last.value;
+            second = last.prev;
+        } else {
+            throw new NoSuchElementException();
+        }
+        last = second;
+        return res;
     }
 
     @Override
@@ -59,10 +83,17 @@ public class ForwardLinked<T> implements Iterable<T> {
     private static class Node<T> {
         T value;
         Node<T> next;
+        Node<T> prev;
 
         public Node(T value, Node<T> next) {
             this.value = value;
             this.next = next;
+        }
+
+        public Node(Node<T> prev, T value, Node<T> next) {
+            this.value = value;
+            this.next = next;
+            this.prev = prev;
         }
     }
 }

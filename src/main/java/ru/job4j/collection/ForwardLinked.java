@@ -1,5 +1,6 @@
 package ru.job4j.collection;
 
+import java.awt.desktop.AppReopenedEvent;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -54,6 +55,22 @@ public class ForwardLinked<T> implements Iterable<T> {
 
         size--;
         return second;
+    }
+
+    public boolean revert() {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        Node<T> current = head;
+        Node<T> second = null;
+        while (current != null) {
+            Node<T> next = current.next;
+            current.next = second;
+            second = current;
+            current = next;
+        }
+        head = second;
+        return true;
     }
 
     @Override

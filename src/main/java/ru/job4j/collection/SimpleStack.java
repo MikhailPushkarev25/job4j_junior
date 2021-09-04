@@ -19,4 +19,9 @@ public class SimpleStack<T> {
     public T popFirst() {
         return linked.deleteLast();
     }
+
+    public boolean isEmpty() {
+        return linked.getSize() == 0;
+    }
+
 }

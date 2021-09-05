@@ -12,6 +12,12 @@ public class SimpleArrayList<T> implements List<T> {
 
     private int modCount;
 
+    private final static int CAPACITY = 10;
+
+    public SimpleArrayList() {
+        this.container = (T[]) new Object[CAPACITY];
+    }
+
     public SimpleArrayList(int capacity) {
         this.container = (T[]) new Object[capacity];
     }
@@ -60,7 +66,7 @@ public class SimpleArrayList<T> implements List<T> {
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             int point;
-            int expectedModCount = modCount;
+            final int expectedModCount = modCount;
             @Override
             public boolean hasNext() {
                 return point < size;

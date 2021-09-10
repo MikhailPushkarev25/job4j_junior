@@ -55,4 +55,28 @@ public class SimpleTreeTest {
                 is(true)
         );
     }
+
+     @Test
+    public void whenExpectedIsBinary() {
+         Tree<Integer> tree = new SimpleTree<>(1);
+         tree.add(1, 2);
+         tree.add(1, 3);
+         tree.add(1, 4);
+         assertThat(
+                 tree.isBinary(),
+                 is(false)
+         );
+     }
+
+     @Test
+    public void whenExpectedIsBinaryTrue() {
+         Tree<Integer> tree = new SimpleTree<>(1);
+         tree.add(1, 2);
+         tree.add(2, 3);
+         tree.add(3, 4);
+         assertThat(
+                 tree.isBinary(),
+                 is(true)
+         );
+     }
 }

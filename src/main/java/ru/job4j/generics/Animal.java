@@ -41,12 +41,16 @@ public class Animal {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Animal animal = (Animal) o;
-        return Objects.equals(name, animal.name) &&
-                Objects.equals(view, animal.view) &&
-                Objects.equals(birthday, animal.birthday);
+        return Objects.equals(name, animal.name)
+                && Objects.equals(view, animal.view)
+                && Objects.equals(birthday, animal.birthday);
     }
 
     @Override
@@ -56,10 +60,10 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "name='" + name + '\'' +
-                ", view='" + view + '\'' +
-                ", birthday=" + birthday +
-                '}';
+        return "Animal{"
+                + "name='" + name + '\''
+                + ", view='" + view + '\''
+                + ", birthday=" + birthday
+                + '}';
     }
 }

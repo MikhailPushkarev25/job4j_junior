@@ -16,12 +16,16 @@ public class User {
 
     @Override
    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return children == user.children &&
-                Objects.equals(name, user.name) &&
-               Objects.equals(birthday, user.birthday);
+        return children == user.children
+                && Objects.equals(name, user.name)
+                && Objects.equals(birthday, user.birthday);
     }
 
     @Override
@@ -31,11 +35,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", children=" + children +
-                ", birthday=" + birthday +
-                '}';
+        return "User{" + "name='"
+                + name + '\''
+                + ", children=" + children
+                + ", birthday=" + birthday
+                + '}';
     }
 
     public static void main(String[] args) {
@@ -57,14 +61,13 @@ public class User {
         Обьекты попали в одну корзину
          */
 
-
         /*
         При переопределении метода HasCode но не переопределяя метод equals  -
         с помощью этого метода мы узнаем индекс в массиве
-        мапы далее если индексы равны то определяем обьекты в один бакет и перезаписываем данные по ключу
+        мапы далее если индексы равны то определяем обьекты в один бакет и
+        перезаписываем данные по ключу
         метод equals не вызывается  в обьекте User так как он не переопределен
          */
-
 
         /*
         При переопределении метода equals сравниваются два одинаковых обьекта

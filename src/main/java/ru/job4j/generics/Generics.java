@@ -30,6 +30,8 @@ public class Generics {
         generics.printLowerBoundedWildCard(third);
 
     }
+
+        @SuppressWarnings("checkstyle:EmptyLineSeparator")
         public void printObject(List<?> obj) {
             for (Iterator<?> it = obj.iterator(); it.hasNext();) {
                 Object object = it.next();

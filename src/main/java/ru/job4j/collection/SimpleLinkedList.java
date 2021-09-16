@@ -12,7 +12,6 @@ public class SimpleLinkedList<E> implements List<E> {
     private int size = 0;
     private int modCount = 0;
 
-
     @Override
     public void addLast(E value) {
 
@@ -42,7 +41,9 @@ public class SimpleLinkedList<E> implements List<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            Node<E> result = first;
+
+            private Node<E> result = first;
+
             private int expectedModCount = modCount;
 
             @Override
@@ -68,9 +69,9 @@ public class SimpleLinkedList<E> implements List<E> {
 
     public class Node<T> {
 
-         T item;
-         Node<E> prev;
-         Node<E> next;
+         private T item;
+         private Node<E> prev;
+         private Node<E> next;
 
         public Node(Node<E> next, T item, Node<E> prev) {
             this.item = item;

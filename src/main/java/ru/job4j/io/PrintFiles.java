@@ -13,7 +13,8 @@ import static java.nio.file.FileVisitResult.CONTINUE;
 
 public class PrintFiles implements FileVisitor<Path> {
 
-    List<Path> list = new ArrayList<>();
+    private List<Path> list = new ArrayList<>();
+
     private Predicate<Path> condition;
 
     public PrintFiles(Predicate<Path> condition) {
@@ -21,7 +22,8 @@ public class PrintFiles implements FileVisitor<Path> {
     }
 
     @Override
-    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+    public FileVisitResult preVisitDirectory(
+            Path dir, BasicFileAttributes attrs) throws IOException {
         return CONTINUE;
     }
 

@@ -34,7 +34,7 @@ public class SimpleTree<E> implements Tree<E> {
         return ch.isEmpty();
     }
     
-    private Optional<Node<E>>findByPredicate(Predicate<Node<E>> condition) {
+    private Optional<Node<E>> findByPredicate(Predicate<Node<E>> condition) {
         Optional<Node<E>> rsl = Optional.empty();
         Queue<Node<E>> data = new LinkedList<>();
         data.offer(this.root);

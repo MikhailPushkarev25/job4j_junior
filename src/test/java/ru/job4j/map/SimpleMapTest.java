@@ -20,17 +20,6 @@ public class SimpleMapTest {
         assertThat(map.get(1), is("Mikle"));
     }
 
-    @Test
-    public void whenExpectedRemoveKeys() {
-        SimpleMap<Integer, String> map = new SimpleMap<>();
-        map.put(1, "Mikle");
-        map.remove(1);
-        map.put(2, "Roman");
-        map.put(3, "Bob");
-        assertNull(map.get(1));
-        assertThat(map.get(2), is("Roman"));
-        assertThat(map.get(3), is("Bob"));
-    }
 
     @Test
     public void whenExpectedIteratorThenArrays() {

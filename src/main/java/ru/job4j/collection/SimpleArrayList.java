@@ -6,13 +6,13 @@ import java.util.*;
 
 public class SimpleArrayList<T> implements List<T> {
 
+    private final static int CAPACITY = 10;
+
     private T[] container;
 
     private int size;
 
     private int modCount;
-
-    private final static int CAPACITY = 10;
 
     public SimpleArrayList() {
         this.container = (T[]) new Object[CAPACITY];
@@ -31,7 +31,6 @@ public class SimpleArrayList<T> implements List<T> {
         container[size++] = value;
         modCount++;
     }
-
 
     @Override
     public T set(int index, T newValue) {
@@ -65,8 +64,11 @@ public class SimpleArrayList<T> implements List<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            int point;
-            final int expectedModCount = modCount;
+
+            private int point;
+
+            private final int expectedModCount = modCount;
+
             @Override
             public boolean hasNext() {
                 return point < size;

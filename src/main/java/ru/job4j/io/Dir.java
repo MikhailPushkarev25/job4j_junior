@@ -7,11 +7,13 @@ public class Dir {
         File file = new File("c:\\projects");
 
         if (!file.exists()) {
-            throw new IllegalArgumentException(String.format("Not exists %s", file.getAbsolutePath()));
+            throw new IllegalArgumentException(String.format(
+                    "Not exists %s", file.getAbsolutePath()));
         }
 
         if (!file.isDirectory()) {
-            throw new IllegalArgumentException(String.format("Not directory %s", file.getAbsoluteFile()));
+            throw new IllegalArgumentException(String.format(
+                    "Not directory %s", file.getAbsoluteFile()));
         }
         System.out.println(String.format("size: %s ", file.getTotalSpace()));
         for (File subFile : file.listFiles()) {

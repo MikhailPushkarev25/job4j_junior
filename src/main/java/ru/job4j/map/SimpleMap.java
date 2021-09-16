@@ -59,8 +59,9 @@ public class SimpleMap<K, V> implements  Map<K, V> {
     @Override
     public Iterator<K> iterator() {
         return new Iterator<K>() {
-            int size = 0;
-            int expectedModCount = modCount;
+
+           private int size = 0;
+            private int expectedModCount = modCount;
 
             @Override
             public boolean hasNext() {
@@ -104,8 +105,10 @@ public class SimpleMap<K, V> implements  Map<K, V> {
     }
 
     private static class MapEntry<K, V> {
-        K key;
-        V value;
+
+        private K key;
+
+        private V value;
 
         public MapEntry(K key, V value) {
             this.key = key;

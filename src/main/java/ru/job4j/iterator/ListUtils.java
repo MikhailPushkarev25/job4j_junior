@@ -37,9 +37,8 @@ public class ListUtils {
         while (i.hasNext()) {
             if (filter.test(i.next())) {
                 i.remove();
-            } else {
-                throw new IndexOutOfBoundsException();
             }
+            throw new IndexOutOfBoundsException();
         }
 
     }
@@ -49,9 +48,8 @@ public class ListUtils {
         while (i.hasNext()) {
             if (filter.test(i.next())) {
                 i.set(value);
-            } else {
-                throw new IndexOutOfBoundsException();
             }
+            throw new IndexOutOfBoundsException();
         }
     }
 
@@ -60,9 +58,8 @@ public class ListUtils {
         while (i.hasNext()) {
             if (elements.contains(i.next())) {
                 i.remove();
-            } else {
-                throw new IndexOutOfBoundsException();
             }
+            throw new IndexOutOfBoundsException();
         }
     }
 }

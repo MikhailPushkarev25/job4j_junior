@@ -15,7 +15,6 @@ public class Programmer extends Person {
 
     }
 
-
     public void printInfo(Collection<? extends Person> col) {
         for (Iterator<? extends Person> it = col.iterator(); it.hasNext();) {
             Person next = it.next();

@@ -23,7 +23,7 @@ public class BackwardArrayIt implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        for (int i = 0; i < data.length -1; i++) {
+        for (int i = 0; i < data.length - 1; i++) {
             int j = data[i];
             data[i] = data[data.length - i - 1];
             data[data.length - i - 1] = j;

@@ -17,9 +17,9 @@ public class ArgsName {
         }
 
         for (String str : args) {
-            if (str.length() != 2) {
-                throw new IllegalArgumentException("Error arguments");
-            }
+//            if (str.length() != 2) {
+//                throw new IllegalArgumentException("Error arguments");
+//            }
             String[] res = str.split("=");
             values.put(res[0].replace("-", ""), res[1]);
         }

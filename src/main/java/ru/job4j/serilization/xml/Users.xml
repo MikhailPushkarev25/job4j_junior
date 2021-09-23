@@ -1,0 +1,8 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<users flag="true" name="Mikhail" age="25">
+    <programmer name="Java"/>
+    <names>
+        <name>JavaScript</name>
+        <name>Json</name>
+    </names>
+</users>

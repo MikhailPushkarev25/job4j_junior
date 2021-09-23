@@ -1,4 +1,4 @@
-package ru.job4j.serilization.java.json;
+package ru.job4j.serilization.json;
 
 public class Names {
     private String names;

@@ -1,7 +1,8 @@
-package ru.job4j.serilization.java.json;
+package ru.job4j.serilization.xml;
 
 public class Contact {
-    private String phone;
+
+    private final String phone;
 
     public Contact(String phone) {
         this.phone = phone;

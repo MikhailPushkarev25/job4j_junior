@@ -2,8 +2,12 @@ package ru.job4j.serilization.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class User {
     private final boolean flag;
@@ -20,6 +24,26 @@ public class User {
         this.numbers = numbers;
     }
 
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Names getNames() {
+        return names;
+    }
+
+    public int[] getNumbers() {
+        return numbers;
+    }
+
     @Override
     public String toString() {
         return "User{"
@@ -32,26 +56,23 @@ public class User {
     }
 
     public static void main(String[] args) {
-        final User user = new User(
-                false, "Mikhail", 25, new Names("Roman"), 1, 2, 3, 4, 5);
+        JSONObject jsonNames = new JSONObject("{\"names\":\"Mikhail\"}");
 
-        Gson gson = new GsonBuilder().create();
-        System.out.println(gson.toJson(user));
+        List<String> list = new ArrayList<>();
+        list.add("Roman");
+        list.add("Nikolay");
+        JSONArray jsonArray = new JSONArray(list);
 
-        String userGson =
-                "{"
-                    + "\"flag\":false,"
-                    + "\"name\":Mikhail,"
-                        + "\"age\":25,"
-                        + "\"user\":"
-                       + "{"
-                             + "\"names\":\"Roman\""
-                       + "},"
-                    + "\"numbers\":"
-                        + "[\"1\", \"2\", \"3\", \"4\", \"5\"]"
-                + "}";
+        User user = new User(false, "Ola", 25, new Names("Oleg"), 1, 2, 3);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("flag", user.isFlag());
+        jsonObject.put("name", user.getName());
+        jsonObject.put("age", user.getAge());
+        jsonObject.put("names", jsonNames);
+        jsonObject.put("numbers", jsonArray);
 
-        final User userMode = gson.fromJson(userGson, User.class);
-        System.out.println(userMode);
+        System.out.println(jsonObject.toString());
+
+        System.out.println(new JSONObject(user).toString());
     }
 }

@@ -2,8 +2,13 @@ package ru.job4j.serilization.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Person {
     private final boolean sex;
@@ -18,6 +23,22 @@ public class Person {
         this.statuses = statuses;
     }
 
+    public boolean isSex() {
+        return sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public String[] getStatuses() {
+        return statuses;
+    }
+
     @Override
     public String toString() {
         return "Person{"
@@ -29,26 +50,28 @@ public class Person {
     }
 
     public static void main(String[] args) {
+        /*JsonObject из Json - строки строки */
+        JSONObject jsonContact = new JSONObject("{\"phone\":\"+7 (924)111-111-11-11\"}");
+
+        /* JsonArray из ArrayList */
+        List<String> list = new ArrayList<>();
+        list.add("Student");
+        list.add("Free");
+        JSONArray jsonStatuses = new JSONArray(list);
+
+        /* JsonObject на прямую методом put  */
         final Person person = new Person(
-                false, 30, new Contact("11-11"), "Worker", "Married");
+                false, 30, new Contact("11-111"), "Worker", "Married");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("sex", person.isSex());
+        jsonObject.put("age", person.getAge());
+        jsonObject.put("contact", jsonContact);
+        jsonObject.put("statuses", jsonStatuses);
 
-        /* Преобразуем обьект person в json строку*/
-        final Gson gson = new GsonBuilder().create();
-        System.out.println(gson.toJson(person));
+        /* Выведем результат в консоль */
+        System.out.println(jsonObject.toString());
 
-        final String personJson =
-                "{"
-                    + "\"sex\":false,"
-                    + "\"age\":35,"
-                    + "\"contact\":"
-                       + "{"
-                            + "\"phone\":\"+7(924)111-11-11\""
-                       + "},"
-                    + "\"statuses\":"
-                       + "[\"Student\", \"Free\"]"
-                + "}";
-
-        final Person personMode = gson.fromJson(personJson, Person.class);
-        System.out.println(personMode);
+        /* Преобразуем обьект Person в json строку */
+        System.out.println(new JSONObject(person).toString());
     }
 }

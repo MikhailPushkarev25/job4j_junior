@@ -41,7 +41,6 @@ public class Model {
         Model model = (Model) o;
         return id == model.id;
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id);

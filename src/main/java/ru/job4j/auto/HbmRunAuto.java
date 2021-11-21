@@ -18,7 +18,6 @@ public class HbmRunAuto {
             Model four = Model.of("M5");
             Model five = Model.of("X1");
 
-
             Mark mark = Mark.of("BMW");
             mark.getModels().add(one);
             mark.getModels().add(two);

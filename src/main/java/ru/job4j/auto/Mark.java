@@ -11,7 +11,6 @@ public class Mark {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
